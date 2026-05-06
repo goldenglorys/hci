@@ -10,7 +10,7 @@ All three steps happen server-side before the feedback screen is shown — parti
 2. **OpenAI GPT-4o-mini** — generates 2-sentence personalised feedback grounded in the actual Whisper transcript
 3. **OpenAI TTS** (`tts-1`, voice: `nova`) — converts the feedback text to an MP3 audio file server-side. The audio is fully loaded before the feedback screen appears, then plays automatically. (~$0.015/1K chars, ~$0.002 per feedback)
 
-**Estimated OpenAI cost for the full study:** ~$1–$3 for 50 participants × 5 rounds each.
+<!-- **Estimated OpenAI cost for the full study:** ~$1–$3 for 50 participants × 5 rounds each. -->
 
 Fallback chain: if Whisper fails → GPT generates feedback from topic/difficulty alone. If GPT fails → pre-written static feedback is shown. If TTS fails → feedback text is still shown silently. Groups A and B never hit any of these APIs.
 
@@ -18,7 +18,7 @@ Fallback chain: if Whisper fails → GPT generates feedback from topic/difficult
 
 1. **Clone the repo**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/goldenglorys/hci.git
    cd hci
    ```
 
