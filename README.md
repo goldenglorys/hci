@@ -1,16 +1,18 @@
 # Language Learning Experiment
 
-An HCI research experiment studying how different types of AI feedback affect speaking motivation in EFL learners. Participants are randomly assigned to one of three groups: Control (fixed difficulty, no feedback), Adaptive (adaptive difficulty, no feedback), or Adaptive + AI Feedback (adaptive difficulty with live OpenAI-powered feedback read aloud via the Web Speech Synthesis API).
+An HCI research experiment studying how different types of AI feedback affect speaking motivation in EFL learners. Participants are randomly assigned to one of three groups: Control (fixed difficulty, no feedback), Adaptive (adaptive difficulty, no feedback), or Adaptive + AI Feedback (adaptive difficulty with live OpenAI-powered feedback read aloud via OpenAI TTS).
 
 ## AI stack (Group C feedback pipeline)
 
-1. **OpenAI Whisper** (`whisper-1`) — transcribes the participant's recorded audio response (~$0.006/min, roughly $0.003 per 30-second response)
-2. **OpenAI GPT-4o-mini** — generates 2-sentence personalised feedback grounded in the actual transcript
-3. **Web Speech Synthesis API** (browser built-in, free) — reads the feedback aloud to the participant
+All three steps happen server-side before the feedback screen is shown — participants see and hear feedback in one go with no loading gaps.
 
-**Estimated OpenAI cost for the full study:** ~$0.50–$2.00 for 50 participants × 5 rounds each.
+1. **OpenAI Whisper** (`whisper-1`) — transcribes the participant's recorded audio immediately after they stop recording. The transcript is shown on the task screen ("We heard: …") before they submit, so they can verify or re-record. (~$0.006/min, ~$0.003 per 30-second response)
+2. **OpenAI GPT-4o-mini** — generates 2-sentence personalised feedback grounded in the actual Whisper transcript
+3. **OpenAI TTS** (`tts-1`, voice: `nova`) — converts the feedback text to an MP3 audio file server-side. The audio is fully loaded before the feedback screen appears, then plays automatically. (~$0.015/1K chars, ~$0.002 per feedback)
 
-Fallback chain: if Whisper fails → GPT generates feedback from topic/difficulty alone. If GPT fails → pre-written static feedback is shown. Groups A and B never hit either API.
+**Estimated OpenAI cost for the full study:** ~$1–$3 for 50 participants × 5 rounds each.
+
+Fallback chain: if Whisper fails → GPT generates feedback from topic/difficulty alone. If GPT fails → pre-written static feedback is shown. If TTS fails → feedback text is still shown silently. Groups A and B never hit any of these APIs.
 
 ## Setup
 
