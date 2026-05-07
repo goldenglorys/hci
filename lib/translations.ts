@@ -5,7 +5,7 @@ export const T = {
       "Effects of Adaptive Difficulty and AI-Generated Feedback on Speaking Motivation",
     consent: "Informed Consent",
     consentIntro:
-      "Thank you for participating in this research study. Please read the following before continuing:",
+      "Thank you for using our platform. Please read the following before continuing:",
     c1: "You will complete 5 short speaking activities about food and daily life topics.",
     c2: "You will record your voice for each speaking task using your microphone.",
     c3: "After the activities, you will complete a short motivation survey.",
@@ -106,7 +106,7 @@ export const T = {
     title: "語言學習研究",
     subtitle: "自適應難度和AI生成回饋對口說動機的影響",
     consent: "知情同意",
-    consentIntro: "感謝你參與這項研究。請在繼續之前閱讀以下內容：",
+    consentIntro: "感謝你使用我們的平台。請在繼續之前閱讀以下內容：",
     c1: "你將完成5個關於食物和日常生活的簡短口說活動。",
     c2: "你將使用麥克風錄製你的回答。",
     c3: "活動結束後，你將完成一份簡短的動機問卷。",

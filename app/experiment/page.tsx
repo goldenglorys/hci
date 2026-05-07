@@ -142,12 +142,7 @@ export default function ExperimentPage() {
   // ── derived values ──────────────────────────────────────────────────────────
   const groupColor =
     group === "A" ? s.gA : group === "B" ? s.gB : s.gC;
-  const groupLabel =
-    group === "A"
-      ? t.control
-      : group === "B"
-      ? t.adaptive
-      : t.adaptiveAI;
+  const groupLabel = `${t.group} ${group}`;
 
   const pct =
     screen === "survey"
@@ -703,7 +698,7 @@ export default function ExperimentPage() {
         {screen === "instructions" && group && (
           <div style={card}>
             <span style={badge(groupColor)}>
-              {t.group} {group} - {groupLabel}
+              {groupLabel}
             </span>
             <h2
               style={{
@@ -782,7 +777,7 @@ export default function ExperimentPage() {
                   </span>
                 )}
                 <span style={{ fontSize: 13, color: s.dim }}>
-                  {t.group} {group}
+                  {groupLabel}
                 </span>
               </div>
             </div>
@@ -1028,9 +1023,6 @@ export default function ExperimentPage() {
               </h3>
               <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
                 <span style={badge(groupColor)}>
-                  {t.group} {group}
-                </span>
-                <span style={{ ...badge(s.accentL), background: s.glow }}>
                   {groupLabel}
                 </span>
               </div>
